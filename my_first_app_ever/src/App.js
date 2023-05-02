@@ -3,8 +3,11 @@ import './App.css';
 import Header from './components/header.js';
 import Player from './components/player';
 import Board from './components/board';
-
 import { useState } from 'react'
+import Counter from './components/counter';
+import Cars from './components/array_state';
+import Auth from './components/auth';
+import Quote from './components/quote';
 
 function App() {
 
@@ -23,15 +26,16 @@ function App() {
   })
   return (
     <div className="App">
-      <Header />
+      {/* <Header />
       <div id="player-container">
         { playersJSX }
-        {/* <Player playerName={"X"}  />
-        <Player playerName={"O"}  />
-        <Player playerName={"Z"}  /> */}
       </div>
       <input value={inputValue} onChange={handleChange}/>
-      <Board />
+      <Board /> */}
+      {/* <Counter /> */}
+      {/* <Cars /> */}
+      {/* <Auth /> */}
+      <Quote />
     </div>
   );
 }

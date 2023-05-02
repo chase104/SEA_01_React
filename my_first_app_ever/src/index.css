@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#auth-container{
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  align-items: center;
+  margin-top: 200px;
+}
+
+#auth-container form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  align-items: center;
+}
