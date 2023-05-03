@@ -2,11 +2,15 @@ import React, { useState } from 'react'
 import './index.css'
 const RandomInspiration = () => {
 
+
+
     const [quotes, setQuotes] = useState([
         "you can do it!", 
         "do more!", 
         "It's something you can do!"
     ])
+
+    
     const [quote, setQuote] = useState(quotes[0]);
     const [inputValue, setInputValue] = useState('')
     // diplay a random inpirational quote

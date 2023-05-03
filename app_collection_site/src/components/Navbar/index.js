@@ -12,7 +12,8 @@ const Navbar = ({functionFromAppThatWillChangeState}) => {
         <div  onClick={() => handleClick('timer')}>Timer App</div>
         <div onClick={() => handleClick('randomnum')}>Random Num App</div>
         <div onClick={() => handleClick('randominspiration')}>Random Inspiration</div>
-        <div>App 4</div>
+        <div onClick={() => handleClick('hooks')}>Hooks</div>
+
     </div>
   )
 }

@@ -6,10 +6,11 @@ import Navbar from './components/Navbar';
 import Timer from './components/Timer';
 import RandomNum from './components/RandomNum';
 import RandomInspiration from './components/RandomInspiration';
+import Hooks from './components/Hooks';
 
 function App() {
 
-  const [currentApp, setCurrentApp] = useState("timer");
+  const [currentApp, setCurrentApp] = useState("hooks");
 
 
 
@@ -20,6 +21,7 @@ function App() {
       {currentApp === 'timer' ? <Timer /> : <></>}
       {currentApp === 'randomnum' ? <RandomNum /> : <></>}
       {currentApp === 'randominspiration' ? <RandomInspiration /> : <></>}
+      {currentApp === 'hooks' ? <Hooks /> : <></>}
       
     </div>
   );
