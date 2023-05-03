@@ -1,0 +1,18 @@
+#nav {
+    width: 100%;
+    padding: 0px 12px;
+    background-color: lightgray;
+    display: flex;
+    justify-content: space-around;
+    color: black;
+}
+
+#nav div {
+    cursor: pointer;
+    height: 100%;
+    padding: 12px 4px;
+}
+
+#nav div:hover {
+    background-color: lightyellow;
+}
