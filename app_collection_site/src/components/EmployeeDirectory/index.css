@@ -1,0 +1,14 @@
+.employee{
+    margin-top: 20px;
+    border: 1px solid white;
+    padding: 8px;
+}
+.employee-form{
+    border: 1px solid white;
+    padding: 8px;
+    margin-top: 20px;
+}
+.employee-form label {
+    margin-right: 8px;
+}
+

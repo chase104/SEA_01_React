@@ -12,7 +12,7 @@ const Navbar = ({functionFromAppThatWillChangeState}) => {
         <div  onClick={() => handleClick('timer')}>Timer App</div>
         <div onClick={() => handleClick('randomnum')}>Random Num App</div>
         <div onClick={() => handleClick('randominspiration')}>Random Inspiration</div>
-        <div onClick={() => handleClick('hooks')}>Hooks</div>
+        <div onClick={() => handleClick('directory')}>Directory</div>
 
     </div>
   )

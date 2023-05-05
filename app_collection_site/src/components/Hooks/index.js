@@ -9,7 +9,6 @@ const Hooks = () => {
 //    when component LEAVES the dom
 //    when a SPECIFIC state changes
 
-    const [cars, setCars] = ["ford", "hyundai", "toyota", "honda"]
     // anythign here runs on EVERY render
     const [user, setUser] = useState(false)
     const [text, setText] = useState('HOOKS')

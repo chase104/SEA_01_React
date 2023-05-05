@@ -8,10 +8,14 @@ import RandomNum from './components/RandomNum';
 import RandomInspiration from './components/RandomInspiration';
 import Hooks from './components/Hooks';
 
+// put whatever is exported into this variable
+import DisplayMessage from './components/Display_Message';
+import EmployeeDirectory from './components/EmployeeDirectory';
+
 function App() {
 
-  const [currentApp, setCurrentApp] = useState("hooks");
-
+  const [currentApp, setCurrentApp] = useState("directory");
+  const [isDarkTheme, setIsDarkTheme] = useState(false)
 
 
   return (
@@ -22,6 +26,7 @@ function App() {
       {currentApp === 'randomnum' ? <RandomNum /> : <></>}
       {currentApp === 'randominspiration' ? <RandomInspiration /> : <></>}
       {currentApp === 'hooks' ? <Hooks /> : <></>}
+      {currentApp === 'directory' ? <EmployeeDirectory/> : <></>}
       
     </div>
   );

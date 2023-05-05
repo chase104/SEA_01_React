@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Header from './components/header.js';
 import Player from './components/player';
@@ -9,10 +8,17 @@ import Cars from './components/array_state';
 import Auth from './components/auth';
 import Quote from './components/quote';
 import SingleTodo from './components/morningExample.js';
+import SimpleCounter from './components/example';
 
 function App() {
 
   let players = ["X", "O", "Z"];
+  document.title = "APP!"
+  let favIconLink = document.querySelector('link[rel="icon"]')
+  console.log(favIconLink);
+  setTimeout(() => {
+    favIconLink.href = "./icon2.ico"
+  }, 3000)
   
   // const [inputValue, setInputValue] = useState("");
 
@@ -38,8 +44,7 @@ function App() {
       <Cars />
       <Auth />
       <Quote /> */}
-      <SingleTodo />
-      <SingleTodo />
+      <SimpleCounter />
     </div>
   );
 }
