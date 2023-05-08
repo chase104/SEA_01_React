@@ -10,13 +10,12 @@ const Display = ({apartmentsToDisplay}) => {
 // I want to show this data
 // make an array of JSX (using the data)
 
-
-
-    let apartmentsJsxArray = apartmentsToDisplay.map((object) => {
-        // return <h4>{object.name}</h4>
-        return <ApartmentCard apartmentObject={object} />
-    });
-
+     let apartmentsJsxArray = apartmentsToDisplay.map(
+        (object) => {
+            // return <h4>{object.name}</h4>
+            return <ApartmentCard apartmentObject={object} key={object.name+object.img}/>
+        }
+    )
 
   return (
     <div>{apartmentsJsxArray}</div>
