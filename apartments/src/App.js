@@ -1,21 +1,22 @@
 import logo from './logo.svg';
 import './App.css';
 import { databaseInfo } from './database';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import Header from './components/Header'
 import Filter from './components/Filter';
 import Display from './components/Display';
 import ApartmentCard from './components/ApartmentCard';
 import CardLoader from './components/CardLoader';
+import { PrimaryContext } from './contexts/PrimaryContext';
+
 
 function App() {
-
-  const [allApartments, setAllApartments] = useState([]);
-  const [matchedApartments, setMatchedApartments] = useState([]);
-  const [loading, setLoading] = useState(true);
+  console.log("rendering app");
   
-  console.log(allApartments);
-  console.log(matchedApartments);
+  const [loading, setLoading] = useState(true);
+
+  const {setAllApartments, setMatchedApartments} = useContext(PrimaryContext)
+
 
   const loaders = [];
   for (let i=0; i<5; i++) {
@@ -25,7 +26,6 @@ function App() {
   useEffect(() => {
     // get information from database
     setTimeout(() => {
-
       let apartmentsArray = databaseInfo;
       setAllApartments(apartmentsArray);
       setMatchedApartments(apartmentsArray);
@@ -34,15 +34,14 @@ function App() {
     }, 2000)
   }, []);
 
+
+
   return (
     <div className="App">
       <div className="App-header">
         <Header />
-        <Filter 
-          allApartments={allApartments} 
-          setMatchedApartments={setMatchedApartments}  
-        />
-        {loading ? loaders : <Display apartmentsToDisplay={matchedApartments} />}
+        <Filter  />
+        {loading ? loaders : <Display />}
       </div>
     </div>
   );

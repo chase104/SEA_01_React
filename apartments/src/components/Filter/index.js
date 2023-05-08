@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './index.css'
+import { PrimaryContext } from '../../contexts/PrimaryContext'
 
 
-const Filter = ({allApartments, setMatchedApartments}) => {
+const Filter = () => {
+
+
+    const { allApartments, setMatchedApartments } = useContext(PrimaryContext);
 
     const [form, setForm] = useState(
         {
