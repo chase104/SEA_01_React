@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import './index.css'
 import { PrimaryContext } from '../../contexts/PrimaryContext'
 
@@ -32,6 +32,14 @@ const Filter = () => {
    const handleSelectChange = (e) => {
     console.log(e.target.value);
    }
+
+   useEffect(() => {
+    
+    return () => {
+        
+    }
+
+   }, [])
 
    const handleSubmit = (e) => {
     e.preventDefault()

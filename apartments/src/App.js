@@ -43,6 +43,8 @@ function App() {
         <Filter  />
         {loading ? loaders : <Display />}
       </div>
+
+      <Home user={user}/>
     </div>
   );
 }
