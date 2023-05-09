@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import Person from './components/person';
 
 function App() {
 
@@ -14,17 +15,17 @@ function App() {
       let peopleArray = response.data.results;
       setPeople(peopleArray);
     });
-  }, [])
-
-  console.log(people);
-
-  // []
-  // [{}, {}, {}, {}, {}, {}, {}, {}]
+  }, []);
+  // people (state)
+  // [] on first render
+  // [{}, {}, {}, {}, {}, {}, {}, {}] after data comes back
   let peopleJSX = people.map((object) => {
-    return <div>{object.name}</div>
+    console.log(object);
+    return <Person name={object.name} height={object.height} key={object.url}/>
   })
+  // peopleJSX
   // []
-  // [<div>Luke</div>, <div>Luke</div>, <div>Luke</div>]
+  // [<Person name={object.name} height={object.height} key={object.url}/>, <Person name={object.name} height={object.height} key={object.url}/>, <Person name={object.name} height={object.height} key={object.url}/>]
 
   return (
     <div className="App">
