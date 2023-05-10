@@ -34,7 +34,7 @@ const MainContextProvider = (props) => {
           ]
     )
     const [favoriteMovie, setFavoriteMovie] = useState("");
-    const [movieToDisplay, setMovieToDisplay] = useState(null)
+    const [movieToDisplay, setMovieToDisplay] = useState(moviesData[0])
 
 
     return (

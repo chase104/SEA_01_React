@@ -1,3 +1,8 @@
 .movies-container{
     display: flex;
+    min-height: 200px;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    background-color: blueviolet;
 }

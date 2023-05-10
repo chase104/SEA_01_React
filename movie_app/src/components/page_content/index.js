@@ -2,10 +2,11 @@ import React, { useContext } from 'react'
 import MovieCard from '../movie_card'
 import { mainContext } from '../../contexts'
 import './index.css'
+import MovieDisplay from '../movieDisplay'
 
 const PageContent = () => {
 
-const { moviesData } = useContext(mainContext);
+const { moviesData, movieToDisplay } = useContext(mainContext);
 
 // [
 //     {
@@ -33,13 +34,12 @@ const { moviesData } = useContext(mainContext);
 
 // [<MovieCard thisMovie={object} />,<MovieCard thisMovie={object} />, <MovieCard thisMovie={object} />  ]
 let moviesJSX = moviesData.map((object) => {
-    return <MovieCard thisMovie={object} />
+    return <MovieCard thisMovie={object} key={object.title}/>
 })
+
   return (
     <div className="movies-container">
-        {/* 3 movie cards */}
-        {moviesJSX}
-        {/* movie display component */}
+        {movieToDisplay ? <MovieDisplay /> : moviesJSX}
     </div>
   )
 }
