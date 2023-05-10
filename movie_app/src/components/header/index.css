@@ -1,0 +1,9 @@
+.header-area{
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
+    margin-top: 20px;
+}
+.header-area img{
+    max-width: 200px;
+}

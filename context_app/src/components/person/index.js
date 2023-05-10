@@ -1,24 +1,34 @@
-import React from 'react'
+import { useState } from "react";
 
-const Person = () => {
-    const Arthur = {
-        name: "Arthur Bernier",
-        age: "35",
-        email: "ceo@arthurbernierjr.com",
-      }
+const Form = () => {
 
-    const allArthurProperties = Object.keys(Arthur)
-    // ["name", "age", "email"]
-    let JSX = allArthurProperties.map((propertyString) => {
-        return <div>{Arthur[propertyString]}</div>
-            
-    })
-    // [<div>Arthur Bernier</div>,<div>35</div>, <div>ceo@arthurbernierjr.com</div> ]
+
+
+
+  const [todo, setTodo] = useState([]);
+  console.log(todo);
+  const [input, setInput] = useState("");
+
+  const handleChange = (e) => {
+    let addedTodo = e.target.value;
+    setInput(addedTodo);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setTodo([...todo, input]);
+    setInput("");
+  };
+
   return (
-    <div>
-       {JSX}
-    </div>
-  )
-}
+    <>
+      <form type="submit" onSubmit={handleSubmit}>
+        <label>Add todo</label>
+        <input type="text" value={input} onChange={handleChange} />
+        <button>add todo</button>
+      </form>
+    </>
+  );
+};
 
-export default Person
+export default Form;

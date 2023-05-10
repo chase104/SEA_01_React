@@ -5,7 +5,8 @@ import axios from 'axios';
 import Person from './components/person';
 
 function App() {
-
+  let title = "Avatar"
+ let url = `http://www.omdbapi.com/?apikey=a3452732&t=${title}`
   // make a request and get our app's data
   const [people, setPeople] = useState([]);
 
