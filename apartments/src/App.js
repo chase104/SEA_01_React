@@ -23,7 +23,8 @@ function App() {
     loaders.push(<CardLoader key={i}/>)
   }
 
-  useEffect(() => {
+
+  const callBackFunction = () => {
     // get information from database
     setTimeout(() => {
       let apartmentsArray = databaseInfo;
@@ -32,7 +33,9 @@ function App() {
       setLoading(false)
 
     }, 2000)
-  }, []);
+  }
+
+  useEffect(callBackFunction, []);
 
 
 

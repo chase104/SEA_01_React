@@ -6,7 +6,6 @@ import { primaryContext } from '../../contexts/PrimaryContext'
 const Navbar = () => {
 
     const { pages } = useContext(primaryContext)
-    // ["Home", "About", "Contact"]
 
     const arrayOfButtonJSX = pages.map((stringInArray) => {
         return <SingleButton text={stringInArray} />
@@ -16,7 +15,7 @@ const Navbar = () => {
     <div>
         {/* show page btns now */}
         {arrayOfButtonJSX}
-        <UserImg />
+        {/* <UserImg /> */}
     </div>
   )
 }

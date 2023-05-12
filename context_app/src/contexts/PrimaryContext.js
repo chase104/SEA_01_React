@@ -6,15 +6,12 @@ export let primaryContext = createContext();
 
 const PrimaryContextProvider = (props) => {
 
-    let userName = "Sarah"
 //  put some state
     const [user, setUser] = useState({
         name: "Mary",
         img: "https://cdn-icons-png.flaticon.com/512/666/666201.png"
     })
-
     const [pages, setPages] = useState(["Home", "About", "Contact"]);
-
     const [currentPage, setCurrentPage] = useState("Home");
 
 // return jsx
@@ -25,7 +22,7 @@ const PrimaryContextProvider = (props) => {
     }
 
     return (
-        <primaryContext.Provider value={contextObject} >
+        <primaryContext.Provider value={contextObject}>
             {props.children}
         </primaryContext.Provider>
     )
