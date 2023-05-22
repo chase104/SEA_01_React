@@ -1,0 +1,11 @@
+.App {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 500px 1fr;
+  min-height: 100vh;
+  height: 100vh;
+  padding: 30px;
+}
+
+
+

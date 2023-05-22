@@ -6,13 +6,13 @@ import Home from './pages/home';
 import { Route, Routes, Navigate, redirect } from 'react-router-dom';
 import Signup from './pages/signup';
 import CourseDetails from './pages/course_details';
-
 function App() {
   return (
     <div className="App">
         <nav>This is my navbar</nav>
         <Routes>
-          <Route path="/" element={<Home />}  />
+          <div>Nav 2</div>
+         <Route path="/" element={<Home />}  />
           <Route path="/about" element={<About />}  />
           <Route path="/contact" element={<Contact />} />
           <Route path="/signup" element={<Signup />} />
