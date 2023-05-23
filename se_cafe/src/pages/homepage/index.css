@@ -2,4 +2,6 @@
     background-color: aquamarine;
     height: 90%;
     margin: auto 0px;
+    display: flex;
+    justify-content: flex-start;
 }

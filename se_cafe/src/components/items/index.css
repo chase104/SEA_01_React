@@ -1,0 +1,20 @@
+.items-container{
+    width: 50%;
+    height: 90%;
+    margin: auto 20px;
+    background-color: antiquewhite;
+}
+
+.item-card{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 27px;
+    margin: 12px;
+    background-color: darkseagreen;
+}
+.price-button-container{
+    display: flex;
+    flex-direction: column;
+    margin: 8px 0px;
+}

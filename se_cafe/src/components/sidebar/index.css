@@ -7,7 +7,7 @@
     flex-direction: column;
     justify-content: space-around;
 }
-#active-cat{
+#the-current-cat{
     background-color: pink;
 }
 .category-container {

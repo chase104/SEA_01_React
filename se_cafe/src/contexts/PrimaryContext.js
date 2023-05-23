@@ -9,7 +9,7 @@ const PrimaryContextProvider = (props) => {
 
     // state here
     const [categories, setCategories] = useState([])
-    const [activeCategory, setActiveCategory] = useState("sandwiches")
+    const [activeCategory, setActiveCategory] = useState("")
     const [items, setItems] = useState([])
 
     return (

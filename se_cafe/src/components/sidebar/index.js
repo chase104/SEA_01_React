@@ -6,14 +6,16 @@ import { PrimaryContext } from '../../contexts/PrimaryContext';
 const Sidebar = () => {
 
     const { categories, activeCategory, setActiveCategory } = useContext(PrimaryContext);
-    // array of objects
-    console.log(categories);
+
 
     const categoryJSX = categories.map((singleCat) => {
         if (activeCategory.toLowerCase() === singleCat.name.toLowerCase()) {
-            return <div id="active-cat">{singleCat.name}</div>
+            return <div id="the-current-cat" key={singleCat.name}>{singleCat.name}</div>
         }
-        return <div onClick={() => setActiveCategory(singleCat.name)}>{singleCat.name}</div>
+            return <div 
+                onClick={() => setActiveCategory(singleCat.name)}
+                key={singleCat.name}
+                >{singleCat.name}</div>
     })
 
   return (
