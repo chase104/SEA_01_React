@@ -1,15 +1,20 @@
 const mongoose = require("mongoose");
 const itemSchema = require("./ItemSchema");
 
-const itemWithQuantity = mongoose.Schema({
+const itemWithQuantitySchema = mongoose.Schema({
     quantity: Number,
     item: itemSchema
-});
+}, {toJSON: {virtuals: true}});
+
+itemWithQuantitySchema.virtual('totalPrice').get(function() {
+    let total = this.quantity*this.item.price;
+    return total;
+})
 
 const cartSchema = new mongoose.Schema(
     {
         checkoutDone: {type: Boolean, default: false},
-        items: [itemWithQuantity]
+        items: {type: [itemWithQuantitySchema], required: true} 
     },
     {timestamps: true}
 

@@ -19,19 +19,60 @@ app.use(express.json());
 app.get("/check_server", (req, res) => {
     res.send("server is good")
 })
+app.get('/cart', async (req, res) => {
+    let dbCart = await Cart.findOne({checkoutDone: false})
+    if (dbCart) {
+        res.json({
+            message: "cart found",
+            cart: dbCart
+        })
+    } else {
+        res.json({
+            message: "no cart",
+            cart: false
+        })
+    }
+})
 
 app.put('/update_cart', async (req, res) => {
     // check if there is an open cart (checkoutDone: false)
+    let clickedItem = req.body;
     // if no open carts, make a new cart
-    let dbResponse = await Cart.find({checkoutDone: false})
-    console.log(dbResponse);
+    let dbCart = await Cart.findOne({checkoutDone: false})
+    console.log(dbCart);
     // if no cart, we get []
-    if (dbResponse.length) {
+    if (dbCart) {
         // there is a cart!
+        // if the clicked item is in the array already, +1 to quantity
+        // we need to know if we found the item in the cart.
+        // so we know if we need to push it to the cart
+        let itemIsInCart = false;
+        dbCart.items.forEach((quantityObj, index) => {
+            console.log(quantityObj.item._id, clickedItem._id);
+            if (quantityObj.item._id == clickedItem._id) {
+                console.log("passing if check");
+                itemIsInCart = true;
+                dbCart.items[index].quantity += 1;
+            }
+        });
+        if (!itemIsInCart) {
+            dbCart.items.push({quantity: 1, item: clickedItem})
+        };
+        // else push to the array
+      
     } else {
+        let response = Cart.create({
+            items: [{quantity: 1, item: clickedItem}]
+        })
+        console.log(response);
+
+   
         // we need to make a cart.
         // using the clicked item!
     }
+
+    dbCart.save()
+    res.send("route done")
     // item to add to cart
     // if item is already in cart, +1
     // if item is not in cart, push to cart

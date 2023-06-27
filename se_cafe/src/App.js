@@ -8,7 +8,7 @@ import { PrimaryContext } from './contexts/PrimaryContext';
 import axios from 'axios';
 
 function App() {
-  const { setCategories, setItems } = useContext(PrimaryContext);
+  const { setCategories, setItems, setCart } = useContext(PrimaryContext);
 
 
 
@@ -16,12 +16,9 @@ function App() {
     // get data
     // put data in context using SET functions
     // ask server for items and categories
-
     axios('/categories').then((response) => {
       setCategories(response.data);
     })
-      
-      
   }, []);
 
   useEffect(() => {
@@ -29,7 +26,15 @@ function App() {
       console.log(response);
       setItems(response.data);
     });
-  }, [])
+  }, []);
+  useEffect(() => {
+    axios('/cart').then((response) => {
+      console.log(response);
+      if (response.data.cart) {
+        setCart(response.data.cart);
+      }
+    });
+  }, []);
 
   return (
     <div className="App">

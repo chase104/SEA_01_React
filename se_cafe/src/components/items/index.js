@@ -20,11 +20,9 @@ const Items = () => {
         return boolean;
     })
 
-
     const handleClick = async (clickedItem) => {
         // item ID or item
         console.log(clickedItem);
-
         // create or update a cart in the database
        let serverResponse = await axios({
             method: "PUT",

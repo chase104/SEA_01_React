@@ -8,9 +8,11 @@ export const PrimaryContext = createContext();
 const PrimaryContextProvider = (props) => {
 
     // state here
-    const [categories, setCategories] = useState([])
-    const [activeCategory, setActiveCategory] = useState("")
-    const [items, setItems] = useState([])
+    const [categories, setCategories] = useState([]);
+    const [activeCategory, setActiveCategory] = useState("Sandwiches");
+    const [items, setItems] = useState([]);
+    const [cart, setCart] = useState(null);
+    // everytime we make a DB cart change, we need to setCart HERE
 
     console.log(items);
 
@@ -19,7 +21,8 @@ const PrimaryContextProvider = (props) => {
             {
                 categories, setCategories,
                 activeCategory, setActiveCategory,
-                items, setItems
+                items, setItems,
+                cart, setCart
             }
         }>
             {props.children}
