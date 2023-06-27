@@ -7,15 +7,17 @@ const Sidebar = () => {
 
     const { categories, activeCategory, setActiveCategory } = useContext(PrimaryContext);
 
-
+//        [<div onClick></div>, <div onClick></div>, <div id="the-current-cat"></div>, <div onClick></div>, <div onClick></div>, <div onClick></div>, <div onClick>Drinks</div>]
     const categoryJSX = categories.map((singleCat) => {
         if (activeCategory.toLowerCase() === singleCat.name.toLowerCase()) {
             return <div id="the-current-cat" key={singleCat.name}>{singleCat.name}</div>
-        }
+        } 
             return <div 
-                onClick={() => setActiveCategory(singleCat.name)}
-                key={singleCat.name}
-                >{singleCat.name}</div>
+                        onClick={() => setActiveCategory(singleCat.name)}
+                        key={singleCat.name}
+                    >
+                        {singleCat.name}
+                    </div>
     })
 
   return (

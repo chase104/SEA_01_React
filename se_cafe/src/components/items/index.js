@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import './index.css'
 import { PrimaryContext } from '../../contexts/PrimaryContext'
+import axios from 'axios';
 
 const Items = () => {
     // what do we need from the context?
@@ -12,9 +13,29 @@ const Items = () => {
     const matchingItems = items.filter((eachItem) => {
         // activeCategory = "sandwiches"
         // {} with .category string value
-        let boolean =  eachItem.category === activeCategory
+    
+        let boolean =  eachItem.category.name === activeCategory;
+        console.log(eachItem.category, activeCategory);
+        console.log(boolean);
         return boolean;
     })
+
+
+    const handleClick = async (clickedItem) => {
+        // item ID or item
+        console.log(clickedItem);
+
+        // create or update a cart in the database
+       let serverResponse = await axios({
+            method: "PUT",
+            url: "/update_cart",
+            data: clickedItem
+        })
+        console.log("server response");
+
+        // if we update or create a cart in DB, we want to 
+        // change the cart HERE in the context
+    }
 
     
     let itemsJSX = matchingItems.map((eachItem) => {
@@ -28,7 +49,7 @@ const Items = () => {
                     <div>
                         {eachItem.price}
                     </div>
-                    <button>Add to cart</button>
+                    <button onClick={() => handleClick(eachItem)}>Add to cart</button>
                 </div>
             </div>
         )

@@ -47,7 +47,7 @@ function App() {
         {loading ? loaders : <Display />}
       </div>
 
-      <Home user={user}/>
+      {/* <Home user={user}/> */}
     </div>
   );
 }

@@ -12,6 +12,8 @@ const PrimaryContextProvider = (props) => {
     const [activeCategory, setActiveCategory] = useState("")
     const [items, setItems] = useState([])
 
+    console.log(items);
+
     return (
         <PrimaryContext.Provider value={
             {

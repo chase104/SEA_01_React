@@ -4,20 +4,33 @@ import Sidebar from './components/sidebar';
 import HomePage from './pages/homepage';
 import ItemDetailsPage from './pages/pageTwo';
 import { useContext, useEffect } from 'react';
-import { categories as categoriesFromDatabase, items } from './data';
 import { PrimaryContext } from './contexts/PrimaryContext';
-import { Divider, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
-import MailIcon from '@mui/icons-material/Mail';
+import axios from 'axios';
+
 function App() {
   const { setCategories, setItems } = useContext(PrimaryContext);
 
+
+
   useEffect(() => {
     // get data
-    setTimeout(() => {
-      setCategories(categoriesFromDatabase);
-      setItems(items);
-    }, 1000)
+    // put data in context using SET functions
+    // ask server for items and categories
+
+    axios('/categories').then((response) => {
+      setCategories(response.data);
+    })
+      
+      
+  }, []);
+
+  useEffect(() => {
+    axios('/items').then((response) => {
+      console.log(response);
+      setItems(response.data);
+    });
   }, [])
+
   return (
     <div className="App">
      {/* forever sidebar */}

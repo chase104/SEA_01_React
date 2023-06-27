@@ -9,11 +9,17 @@ export const categories = [
     {name: 'Drinks', sortOrder: 70},
   ]
   
-
+// create many
   
 export const items = [
-    {name: 'Hamburger', emoji: '🍔', category: categories[0].name, price: 5.95, 
-    ingredients: ['Beef Patty', 'Bun', 'Lettuce', 'Tomato', 'Onion']},
+    {
+      name: 'Hamburger', 
+      emoji: '🍔', 
+      category: categories[0].name, 
+      price: 5.95, 
+      ingredients: ['Beef Patty', 'Bun', 'Lettuce', 'Tomato', 'Onion']
+    }
+    ,
 
     {name: 'Turkey Sandwich', emoji: '🥪', category: categories[0].name, price: 6.95, 
     ingredients: ['Turkey', 'Bread', 'Lettuce', 'Tomato', 'Mayonnaise']},
