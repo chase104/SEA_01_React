@@ -8,18 +8,47 @@ const itemWithQuantitySchema = mongoose.Schema({
 
 itemWithQuantitySchema.virtual('totalPrice').get(function() {
     let total = this.quantity*this.item.price;
-    return total;
-})
+    // add + to a string will turn it into a number
+    let newTotal = +total.toFixed(2)
+    return newTotal;
+});
 
 const cartSchema = new mongoose.Schema(
     {
         checkoutDone: {type: Boolean, default: false},
         items: {type: [itemWithQuantitySchema], required: true} 
     },
-    {timestamps: true}
+    {timestamps: true, toJSON: {virtuals: true}}
 
 )
 
+cartSchema.virtual('totalQuantity').get(function() {
+    // look and count the quantities of the items
+    // let totalOfAll = this.items.reduce((total, currentItem) => {
+    //     return total + currentItem.quantity
+    // }, 0)
+    // return totalOfAll;
+    let totalOfAll = 0;
+    for(let i=0; i<this.items.length; i++){
+        totalOfAll += this.items[i].quantity
+    }
+    return totalOfAll;
+})
+
+cartSchema.virtual('totalCartPrice').get(function() {
+    // look and count the quantities of the items
+    // let totalOfAll = this.items.reduce((total, currentItem) => {
+    //     return total + currentItem.quantity
+    // }, 0)
+    // return totalOfAll;
+    let totalOfAll = 0;
+    for(let i=0; i<this.items.length; i++){
+        console.log(this.items[i].totalPrice);
+        totalOfAll += this.items[i].totalPrice
+    }
+    let newTotal = +totalOfAll.toFixed(2);
+    return newTotal;
+})
 
 let exampleCart = {
     items: [

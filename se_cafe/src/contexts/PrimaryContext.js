@@ -14,7 +14,7 @@ const PrimaryContextProvider = (props) => {
     const [cart, setCart] = useState(null);
     // everytime we make a DB cart change, we need to setCart HERE
 
-    console.log(items);
+   
 
     return (
         <PrimaryContext.Provider value={

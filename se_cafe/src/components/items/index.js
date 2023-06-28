@@ -6,7 +6,7 @@ import axios from 'axios';
 const Items = () => {
     // what do we need from the context?
     // items, active category
-    const { items, activeCategory } = useContext(PrimaryContext);
+    const { items, activeCategory, setCart } = useContext(PrimaryContext);
     // we need an array of divs ONLY that match the category
     // we can use the .filter method
 
@@ -15,20 +15,21 @@ const Items = () => {
         // {} with .category string value
     
         let boolean =  eachItem.category.name === activeCategory;
-        console.log(eachItem.category, activeCategory);
-        console.log(boolean);
+
         return boolean;
     })
 
     const handleClick = async (clickedItem) => {
         // item ID or item
-        console.log(clickedItem);
+
         // create or update a cart in the database
        let serverResponse = await axios({
             method: "PUT",
             url: "/update_cart",
             data: clickedItem
         })
+        console.log(serverResponse);
+        setCart(serverResponse.data)
         console.log("server response");
 
         // if we update or create a cart in DB, we want to 

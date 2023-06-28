@@ -4,6 +4,25 @@
     justify-content: space-around;
 }
 
-.quantity-price{
-    
+.quantity{
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+}
+
+.one-line-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+.cart-button{
+    color: white;
+    font-weight: bold;
+    background: orange;
+    padding: 2px;
+    max-height: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer
 }

@@ -72,7 +72,7 @@ app.put('/update_cart', async (req, res) => {
     }
 
     dbCart.save()
-    res.send("route done")
+    res.json(dbCart)
     // item to add to cart
     // if item is already in cart, +1
     // if item is not in cart, push to cart

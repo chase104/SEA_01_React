@@ -23,13 +23,13 @@ function App() {
 
   useEffect(() => {
     axios('/items').then((response) => {
-      console.log(response);
+
       setItems(response.data);
     });
   }, []);
   useEffect(() => {
     axios('/cart').then((response) => {
-      console.log(response);
+      console.log(response.data.cart)
       if (response.data.cart) {
         setCart(response.data.cart);
       }
