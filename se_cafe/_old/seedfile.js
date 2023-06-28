@@ -1,11 +1,11 @@
 // "seed files" simple put lots of data into a database (usually at the start)
 // connect to MongoDB
 require('dotenv').config()
-require('./config/database.js');
+require('../config/database.js');
 
 // use our Models
-const Category = require("./models/Category");
-const Item = require('./models/ItemModel.js');
+const Category = require("../models/Category.js");
+const Item = require('../models/ItemModel.js');
 
 
 const populateDatabase = async () => {
