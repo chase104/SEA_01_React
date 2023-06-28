@@ -6,6 +6,8 @@ import ItemDetailsPage from './pages/pageTwo';
 import { useContext, useEffect } from 'react';
 import { PrimaryContext } from './contexts/PrimaryContext';
 import axios from 'axios';
+import { Route, Routes } from 'react-router-dom';
+import OldOrders from './pages/old_orders';
 
 function App() {
   const { setCategories, setItems, setCart } = useContext(PrimaryContext);
@@ -38,24 +40,12 @@ function App() {
 
   return (
     <div className="App">
-     {/* forever sidebar */}
-     <Sidebar />
-     {/* <Drawer anchor={"left"} open={true} >
-          <List>
-            <ListItem>
-              <ListItemButton>
-                <ListItemIcon>
-                  <MailIcon />
-                </ListItemIcon>
-                <ListItemText primary={"Item 1"}/>
-              </ListItemButton>
-            </ListItem>
-            <Divider />
-          </List>
-      </Drawer> */}
-     <HomePage />
-     {/* <ItemDetailsPage /> */}
-     {/* switch between 2 pages */}
+    <Routes>
+      <Route path="/" element={<HomePage />}/>
+      <Route path="/old_orders" element={<OldOrders/>}/>
+    </Routes>
+     
+
 
     </div>
   );

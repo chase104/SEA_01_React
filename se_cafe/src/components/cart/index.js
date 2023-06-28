@@ -15,8 +15,20 @@ const Cart = () => {
       url: "/update_cart",
       data: quantityItem.item
     })
+    setCart(response.data);
+  }
+
+  const handleMinus = async (quantityItem) => {
+    // want to go update the cart.
+    let response = await axios({
+      method: "PUT",
+      url: "/subtract_quantity",
+      data: quantityItem.item
+    })
     setCart(response.data)
   }
+
+  
   // only continue if cart exists.
     const cartItemsJSX = cart?.items.map((quantityItem) => {
       return (
@@ -24,7 +36,7 @@ const Cart = () => {
           <div>{quantityItem.item.emoji}</div>
           <div>{quantityItem.item.name}</div>
           <div className="quantity">
-            <div className="cart-button">-</div>
+            <div className="cart-button" onClick={() => handleMinus(quantityItem)}>-</div>
             <div>{quantityItem.quantity}</div>
             <div className="cart-button" onClick={() => handlePlus(quantityItem)}>+</div>
           </div>
@@ -32,8 +44,17 @@ const Cart = () => {
           <div>${quantityItem.totalPrice}</div>
         </div>
       )
-   
     })
+
+
+    const handleSubmit = async () => {
+      let response = await axios({
+        method: "PUT",
+        url: "/checkout_cart"
+      })
+      // if check to see if checkout was successful
+      setCart(null);
+    }
 
   return (
     <div>
@@ -50,6 +71,7 @@ const Cart = () => {
         <div>Total items in cart: {cart?.totalQuantity}</div>
         <div>Total Price of EVERYTHING:  {cart?.totalCartPrice}</div>
       </div>
+      <button onClick={handleSubmit}>SUBMIT</button>
     </div>
   )
 }

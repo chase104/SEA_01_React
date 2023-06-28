@@ -59,25 +59,74 @@ app.put('/update_cart', async (req, res) => {
             dbCart.items.push({quantity: 1, item: clickedItem})
         };
         // else push to the array
-      
+        dbCart.save()
+        res.json(dbCart)
     } else {
-        let response = Cart.create({
+        let newCart = await Cart.create({
             items: [{quantity: 1, item: clickedItem}]
         })
-        console.log(response);
+        res.json(newCart);
 
-   
         // we need to make a cart.
         // using the clicked item!
     }
 
-    dbCart.save()
-    res.json(dbCart)
+
     // item to add to cart
     // if item is already in cart, +1
     // if item is not in cart, push to cart
 
 })
+
+app.put('/subtract_quantity', async (req, res) => {
+    const clickedItem = req.body;
+    // get cart from db
+    let dbCart = await Cart.findOne({checkoutDone: false});
+    // find the correct item in the cart
+    //  there are many items, so we need to loop and check the ids
+    dbCart.items.forEach((quantityItem, index) => {
+        if (clickedItem._id == quantityItem.item._id) {
+            // this is the correct item!
+                // -1 to the quantity (and remove from array if <= 0)
+            dbCart.items[index].quantity -= 1;
+            // if quantity is now <= 0, take out of cart!
+            if (dbCart.items[index].quantity <= 0) {
+                dbCart.items.splice(index, 1)
+            }
+        }
+    })
+
+    // .save
+    dbCart.save() // send new cart to MongoDB
+    // send new cart to the frontend
+    res.json(dbCart)
+})
+
+app.put("/checkout_cart", async (req, res) => {
+    // OPTION 1
+    // get cart form DB
+    // change checkoutDone to true
+    // .save
+
+    // OPTION 2
+    // use the findOneAndUpdate method
+    let dbResponse = await Cart.findOneAndUpdate({checkoutDone: false}, {checkoutDone: true});
+    res.send(dbResponse)
+
+})
+
+
+app.get('/old_orders', async (req, res) => {
+    let dbResponse = await Cart.find({checkoutDone: true});
+    console.log(dbResponse);
+    res.send(dbResponse)
+})
+
+
+
+
+
+
 app.get('/categories', async (req, res) => {
     // get categories
     let categories = await Category.find();
